@@ -18,9 +18,22 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 """
 
-distinct_numbers = {*()} # empty set
+def contains(list, number):
+    for el in list:
+        if el == number:
+            return True
+    return False
+
+def addUnique(list, number):
+    if not contains(list, number):
+        list += [number]
+
+distinct_numbers = []
 for text in texts:
-    distinct_numbers |= {text[0], text[1]}
+    addUnique(distinct_numbers, text[0])
+    addUnique(distinct_numbers, text[1])
 for call in calls:
-    distinct_numbers |= {call[0], call[1]}
+    addUnique(distinct_numbers, call[0])
+    addUnique(distinct_numbers, call[1])
 print(f"There are {len(distinct_numbers)} different telephone numbers in the records.")
+        
