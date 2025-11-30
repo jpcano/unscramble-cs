@@ -101,8 +101,7 @@ The percentage should have 2 decimal digits
 total = 0
 toBangalore = 0
 for call in calls:
-  caller = call[0]
-  callee = call[1]
+  caller, callee = call[0], call[1]
   if isBangalore(caller):
     total += 1
     if isBangalore(callee):
