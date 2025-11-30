@@ -25,15 +25,11 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
-def contains(list, number):
+def addUnique(list, number):
     for el in list:
         if el == number:
-            return True
-    return False
-
-def addUnique(list, number):
-    if not contains(list, number):
-        list += [number]
+            return
+    list += [number]
 
 distinct_text_numbers = []
 for text in texts:
@@ -48,7 +44,7 @@ distinct_telemarketers = []
 for call in calls:
     if(call[0] not in distinct_text_numbers and call[0] not in distinct_callees):
         addUnique(distinct_telemarketers, call[0])
-        
+
 print("These numbers could be telemarketers:")
 for number in sorted(distinct_telemarketers):
   print(number)

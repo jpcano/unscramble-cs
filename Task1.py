@@ -18,15 +18,11 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 """
 
-def contains(list, number):
+def addUnique(list, number):
     for el in list:
         if el == number:
-            return True
-    return False
-
-def addUnique(list, number):
-    if not contains(list, number):
-        list += [number]
+            return
+    list += [number]
 
 distinct_numbers = []
 for text in texts:

@@ -67,15 +67,12 @@ Print the answer as part of a message:
  <list of codes>
 The list of codes should be print out one per line in lexicographic order with no duplicates.
 """
-def contains(list, number):
-    for el in list:
-        if el == number:
-            return True
-    return False
 
 def addUnique(list, number):
-    if not contains(list, number):
-        list += [number]
+    for el in list:
+        if el == number:
+            return
+    list += [number]
 
 codes = []
 for call in calls:
