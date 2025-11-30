@@ -3,6 +3,7 @@ Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
 import csv
+from Task1 import addUnique
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -24,12 +25,6 @@ Print a message:
 <list of numbers>
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
-
-def addUnique(list, number):
-    for el in list:
-        if el == number:
-            return
-    list += [number]
 
 distinct_text_numbers = []
 for text in texts:
