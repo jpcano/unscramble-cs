@@ -11,6 +11,25 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
+durations = {}
+top = {"number":None, "duration":0}
+
+def insertOrAccum(d, number, duration):
+    if number in d:
+        d[number] += int(duration)
+    else:
+        d[number] = int(duration)
+    
+for call in calls:
+    insertOrAccum(durations, call[0], call[3])
+    insertOrAccum(durations, call[1], call[3])
+
+for call in durations:
+    if durations[call] > top['duration']:
+        top = {'number':call, 'duration': durations[call]}
+
+print(f"{top['number']} spent the longest time, {top['duration']} seconds, on the phone during September 2016.")
+
 """
 TASK 2: Which telephone number spent the longest time on the phone
 during the period? Don't forget that time spent answering a call is
