@@ -69,11 +69,13 @@ def isTelemarketer(number):
 def telemarketerCode(number):
   return "140"
 
+def isBangalore(number):
+  return isFixed(number) and fixedCode(number) == "080"
+
 codes = []
 for call in calls:
   caller, callee = call[0], call[1]
-  if isFixed(caller) and fixedCode(caller) == "080":
-    print("pepe")
+  if isBangalore(caller):
     if isFixed(callee):
       addUnique(codes, fixedCode(callee))
     elif isMobile(callee):
@@ -101,9 +103,9 @@ toBangalore = 0
 for call in calls:
   caller = call[0]
   callee = call[1]
-  if isFixed(caller) and fixedCode(caller) == "080":
+  if isBangalore(caller):
     total += 1
-    if isFixed(callee) and fixedCode(callee) == "080":
+    if isBangalore(callee):
       toBangalore += 1
 percentage = 100 * toBangalore/total
 print(f"{percentage:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
