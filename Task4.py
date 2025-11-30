@@ -25,3 +25,18 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
+distinct_text_numbers = {*()} # empty set
+for text in texts:
+    distinct_text_numbers |= {text[0], text[1]}
+
+distinct_callees = {*()} # empty set
+for call in calls:
+    distinct_callees |= {call[1]}
+
+distinct_telemarketers = {*()} # empty set
+for call in calls:
+    if(call[0] not in distinct_text_numbers and call[0] not in distinct_callees):
+        distinct_telemarketers |= {call[0]}
+print("These numbers could be telemarketers:")
+for number in sorted(distinct_telemarketers):
+  print(number)
