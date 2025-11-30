@@ -67,19 +67,28 @@ Print the answer as part of a message:
  <list of codes>
 The list of codes should be print out one per line in lexicographic order with no duplicates.
 """
+def contains(list, number):
+    for el in list:
+        if el == number:
+            return True
+    return False
 
-codes = {*()} # empty set
+def addUnique(list, number):
+    if not contains(list, number):
+        list += [number]
+
+codes = []
 for call in calls:
   caller = call[0]
   callee = call[1]
   if isFixed(caller) and fixedCode(caller) == "080":
     print("pepe")
     if isFixed(callee):
-      codes |= {fixedCode(callee)}
+      addUnique(codes, fixedCode(callee))
     elif isMobile(callee):
-      codes |= {mobileCode(callee)}
+      addUnique(codes, mobileCode(callee))
     elif isTelemarketer(callee):
-      codes |= {telemarketerCode(callee)}
+      addUnique(codes, telemarketerCode(callee))
 print("The numbers called by people in Bangalore have codes:")
 for code in sorted(codes):
   print(code)
