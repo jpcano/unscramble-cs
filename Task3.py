@@ -12,6 +12,39 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
+def isFixed(number):
+  return number[0] == "("
+
+def fixedCode(number):
+  code = ""
+  for ch in number[1:]:
+    if ch == ")":
+      break
+    else:
+      code += ch
+  return code
+    
+def isMobile(number):
+  for ch in number:
+    if ch == " ":
+      return True
+  return False
+
+def mobileCode(number):
+  code = ""
+  for ch in number:
+    if ch == " ":
+      break
+    else:
+      code += ch
+  return code
+    
+def isTelemarketer(number):
+   return not isFixed(number) and not isMobile(number) and number[0:4] == "140"
+
+def telemarketerCode(number):
+  return "140"
+
 """
 TASK 3:
 (080) is the area code for fixed line telephones in Bangalore.
@@ -33,7 +66,24 @@ Print the answer as part of a message:
 "The numbers called by people in Bangalore have codes:"
  <list of codes>
 The list of codes should be print out one per line in lexicographic order with no duplicates.
+"""
+codes = {*()} # empty set
+for call in calls:
+  caller = call[0]
+  callee = call[1]
+  if isFixed(caller) and fixedCode(caller) == "080":
+    print("pepe")
+    if isFixed(callee):
+      codes |= {fixedCode(callee)}
+    elif isMobile(callee):
+      codes |= {mobileCode(callee)}
+    elif isTelemarketer(callee):
+      codes |= {telemarketerCode(callee)}
+print("The numbers called by people in Bangalore have codes:")
+for code in sorted(codes):
+  print(code)
 
+"""
 Part B: What percentage of calls from fixed lines in Bangalore are made
 to fixed lines also in Bangalore? In other words, of all the calls made
 from a number starting with "(080)", what percentage of these calls
@@ -44,3 +94,16 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+total = 0
+toBangalore = 0
+for call in calls:
+  caller = call[0]
+  callee = call[1]
+  if isFixed(caller) and fixedCode(caller) == "080":
+    total += 1
+    if isFixed(callee) and fixedCode(callee) == "080":
+      toBangalore += 1
+percentage = 100 * toBangalore/total
+print(f"{percentage:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
+
+
