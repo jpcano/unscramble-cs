@@ -67,6 +67,7 @@ Print the answer as part of a message:
  <list of codes>
 The list of codes should be print out one per line in lexicographic order with no duplicates.
 """
+
 codes = {*()} # empty set
 for call in calls:
   caller = call[0]
@@ -94,6 +95,7 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
 total = 0
 toBangalore = 0
 for call in calls:
