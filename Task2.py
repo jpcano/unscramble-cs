@@ -20,18 +20,17 @@ Print a message:
 September 2016.".
 """
 
-durations = {}
-top = {"number":None, "duration":0}
-def insertOrAccum(d, number, duration):
-    if number in d:
-        d[number] += int(duration)
-    else:
-        d[number] = int(duration)
+durations = []
+top = [None, 0]
+def insertOrAccum(list, number, duration):
+    for el in list:
+        if el[0] == number:
+            el[1] += int(duration)
+    list += [[number, int(duration)]]
 for call in calls:
     insertOrAccum(durations, call[0], call[3])
     insertOrAccum(durations, call[1], call[3])
-for number in durations:
-    if durations[number] > top['duration']:
-        top = {'number':number, 'duration': durations[number]}
-print(f"{top['number']} spent the longest time, {top['duration']} seconds, on the phone during September 2016.")
-
+for el in durations:
+    if el[1] > top[1]:
+        top = el
+print(f"{top[0]} spent the longest time, {top[1]} seconds, on the phone during September 2016.")
