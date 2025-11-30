@@ -19,14 +19,14 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
-
-durations = []
-top = [None, 0]
 def insertOrAccum(list, number, duration):
     for el in list:
         if el[0] == number:
             el[1] += int(duration)
     list += [[number, int(duration)]]
+
+durations = []
+top = [None, 0]
 for call in calls:
     insertOrAccum(durations, call[0], call[3])
     insertOrAccum(durations, call[1], call[3])
