@@ -24,9 +24,9 @@ for call in calls:
     insertOrAccum(durations, call[0], call[3])
     insertOrAccum(durations, call[1], call[3])
 
-for call in durations:
-    if durations[call] > top['duration']:
-        top = {'number':call, 'duration': durations[call]}
+for number in durations:
+    if durations[number] > top['duration']:
+        top = {'number':number, 'duration': durations[number]}
 
 print(f"{top['number']} spent the longest time, {top['duration']} seconds, on the phone during September 2016.")
 
