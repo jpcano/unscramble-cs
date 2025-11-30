@@ -19,6 +19,11 @@ Print a message:
 """
 
 def addUnique(list, number):
+    """
+    To avoid using set() data structure (forbidden according to the project 
+    description), addUnique will add a new 'number' element to 'list'
+    if and only if 'number' is not already present in 'list'.
+    """
     for el in list:
         if el == number:
             return
