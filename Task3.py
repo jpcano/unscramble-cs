@@ -55,13 +55,7 @@ def isMobile(number):
   return False
 
 def mobileCode(number):
-  code = ""
-  for ch in number:
-    if ch == " ":
-      break
-    else:
-      code += ch
-  return code
+  return number[:4]
     
 def isTelemarketer(number):
    return not isFixed(number) and not isMobile(number) and number[0:4] == "140"
